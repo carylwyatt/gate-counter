@@ -93,8 +93,11 @@ During a previous project, I realized you can send data to google form without e
 
 Use your browser's handy-dandy inspector tools on each input of your form to find the unique ID number (it will look like `entry.039480298`). Swap out the URL of the form (everything except the `viewform` bit at the end-- don't forget the last slash!) and entry variables in `gate-counter.js` and you should be good to go!
 
-[image of form url]
-[image of entry id #]
+What the form URL should look like:
+![form url](https://libapps.s3.amazonaws.com/accounts/41961/images/form-url.jpg)
+
+Where to find entry ID number in inspector:
+![inspect entry id #](https://libapps.s3.amazonaws.com/accounts/41961/images/entry-id.jpg)
 
 You can test your URL by taking the URL from the cron job section of the code and sub in all the variables (both IDs and their respective values) and popping it into your address bar. If you get the google form submission page saying you submitted a form, you win!
 
