@@ -41,7 +41,9 @@ At the moment, the PIR sensor portion of the raspi is taped to the inside of a k
 <a name="raspi"></a>
 ## raspberry pi
 ### getting started
-There are many options for selecting and installing an OS. I'm using Raspbian. [Installation documentation](https://www.raspberrypi.org/documentation/installation/) can help you choose and get started.
+There are many options for selecting and installing an OS. I'm using Raspbian. [Installation documentation](https://www.raspberrypi.org/documentation/installation/) can help you choose and get started. 
+
+>Note: One of the npm packages I use, [raspi-io](https://github.com/nebrius/raspi-io), only runs on Raspbian Jessie and newer.
 
 ### network
 I'm currently running the raspi on the staff wifi in my building. This is not an ideal setup. Getting the college to run an extra data drop is not very likely to happen, so I'm going to have to work with IT on a better wireless solution. 
@@ -49,7 +51,6 @@ I'm currently running the raspi on the staff wifi in my building. This is not an
 Getting the wifi set up correctly was challenging because of the network security or something. It took some googling, but I eventually found some raspi forum where a student had figured out what to include in the wpa config file to get on the university wifi, and this bit of network code ended up working for me at my institution (ymmv):
 
 1. Open the wpa-supplicant file using nano:
-
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
 
 2. Paste this in:
@@ -95,23 +96,69 @@ Use your browser's handy-dandy inspector tools on each input of your form to fin
 [image of form url]
 [image of entry id #]
 
-[My spreadsheet](https://docs.google.com/spreadsheets/d/1X7p5venJ61yVd6fyzJkJJAzVwMIyXJD4Db2249MfIVw/edit#gid=587752914) has some logic and math built in to separate the data from the form by month and count it up in different ways. This is by no means an elegant solution, but it is free and it works. Feel free to make a copy! **File > Make a copy**
+You can test your URL by taking the URL from the cron job section of the code and sub in all the variables (both IDs and their respective values) and popping it into your address bar. If you get the google form submission page saying you submitted a form, you win!
 
 > In case you are interested in embedding google forms in your site without inserting the ugly form itself, there's a really neat tool that can build out the html of a custom google form for you: [Google Forms HTML Exporter](http://stefano.brilli.me/google-forms-html-exporter/)
+
+### spreadsheet
+
+[My spreadsheet](https://docs.google.com/spreadsheets/d/1X7p5venJ61yVd6fyzJkJJAzVwMIyXJD4Db2249MfIVw/edit#gid=587752914) has some logic and math built in to separate the data from the form by month and count it up in different ways. This is by no means an elegant solution, but it is free and it works. Feel free to make a copy! **File > Make a copy**
 
 ## node.js
 Most of the examples of IR sensor people counters I found via google were built with python. I'm a javascript girl. For the sake of the raspi, I attempted to learn python, but I struggled to debug in a new language, so I switched to javascript. See the [further reading](#reading) section below to see what other raspi-ers accomplished using python.
 
-### johnny-five
-### request
-### moment
+The best (only?) way to use javascript on a raspberry pi is with [node.js](https://nodejs.org/en/). I used these two guides for installing node on my raspi:
+
+- [Beginner’s Guide to Installing Node.js on a Raspberry Pi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/)
+- [adafruit - Node.js Embedded Development on the Raspberry Pi](https://learn.adafruit.com/node-embedded-development/why-node-dot-js)
+
+### npm modules
+[npm packages and modules](https://www.npmjs.com/) do the heavy code lifting for us. This project would not be possible without them. If you've never heard of npm, check it out and come back: [What is npm?](https://docs.npmjs.com/getting-started/what-is-npm)
+
+#### johnny-five
+The [Johnny Five](http://johnny-five.io/) platform makes coding javascript/node robotics and internet-of-things projects super easy. I wandered the internet and npm for a solid week before discovering this wonderful platform, and this essentially solved all my problems.
+
+The API has tons of useful components, but we only need one for this project: [motion](http://johnny-five.io/api/motion/). The sensor I used is the first in the list of supported sensors, so I knew I was on the right track! You can dabble with the different events, but I've found there's not much of a difference between `motionstart` and `motionend`, and `change` was too much activity.
+
+#### raspi-io
+Johnny Five is written to be used with an arduino. Since we're using a raspi, we'll need to install a plugin that converts the bread board info to the raspi's GPIOs. [raspi-io](https://github.com/nebrius/raspi-io) is just the thing.
+
+#### request
+[Request](https://www.npmjs.com/package/request) makes http calls. In other words, it's what sends our form URL to google. It doesn't get any easier than those six lines of code.
+
+#### moment.js
+[Moment.js](https://momentjs.com/) is the easy way to deal with time in javascript. Fun fact: javascript counts time as how many milliseconds have passed since midnight of January 1, 1970! How fun is it to calculate `1510774793166 ms` into an actual date? Not a whole lot, actually. Moment.js takes care of all of that for us! 
+
+If you've decided to remove the month, date, and time variables from your form/code, you don't need moment.js. There is no need to install the module and delete it from the required modules at the top of the file. 
+
+#### node-schedule
+The easiest way to schedule our program to send our form data at a specific intervals is to set up a cron job. The best scheduler I've found for node is [node-schedule](https://www.npmjs.com/package/node-schedule). 
+
+There are lots of timing options, so if you don't want your cron job to run every 10 minutes, just change the time intervals.
 
 ## now, put it all together
-My plan is to eventually create an npm package that will do all of this, but I haven't gotten that far. Until then, this should work as long as you replace the google form URL.
+Open `gate-counter.js` and replace all the variables with the appropriate values from your google form. Here's where you can tinker with what data you want to send, how often your cron job runs, etc.
 
+> My plan is to eventually create an npm package that will do all of this, but I haven't gotten that far. Until then, this should work as long as you replace the google form URL and entry IDs with your form info.
+
+### install packages
 `npm install --save request moment node-schedule raspi-io johnny-five`
 
+This could take a few minutes.
+
+### run program
 `sudo node gate-counter.js`
+
+If your PIR sensor is hooked up correctly and you have no syntax errors in your `gate-counter.js` file, you should get something looking like this in your console:
+
+```
+pi@raspberrypi:~/gate-counter $ sudo node gate-counter.js
+1510773792422 Available RaspberryPi-IO  
+1510773792696 Connected RaspberryPi-IO  
+1510773792706 Repl Initialized  
+>> calibrated November 15, 2017 14:23:14
+```
+If so, your pi is calibrated and ready to start counting!
 
 <a name="reading"></a>
 ## further reading
