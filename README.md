@@ -90,7 +90,7 @@ Signal 	(**OUT**)	--> GPIO 07 (pin 26)
 
 Use this diagram for visual of where to plug things in:
 
-![raspi 3 model b pin diagram](https://www.element14.com/community/servlet/JiveServlet/previewBody/73950-102-11-339300/pi3_gpio.png)
+![raspi 3 model b pin diagram](https://libapps.s3.amazonaws.com/accounts/41961/images/pi3_gpio.jpg)
 
 You can always choose a different pin for the output, but you'll need to update the code on line 41 where it says `GPIO7`.
 
