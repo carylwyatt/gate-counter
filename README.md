@@ -80,12 +80,14 @@ Raspberry Pi [wifi configuration docs](https://www.raspberrypi.org/documentation
 ### PIR sensor
 Now for the fun stuff!
 
-The sensor has three pins on the back and you will use all three. Plug three jumper wires to those pins. The first time I tried this, I thought I needed to be super gentle, but these things are all that fragile, so make sure you get a snug connection! 
+The sensor has three pins on the back and you will use all three. Plug three jumper wires to those pins. The first time I tried this, I thought I needed to be super gentle, but these things are not all that fragile, so make sure you get a snug connection! 
 
 Hook up the other end of the wires to the following GPIO pins on the raspi motherboard (you can find the labels of PIR pins on the back next to where to pins connect to the sensor):
 
 Ground (**GND**) 	--> 	Ground (pin 06)
+
 V+ (**VCC**)			-->	 3.3v (pin 01)
+
 Signal 	(**OUT**)	--> GPIO 07 (pin 26)
 
 Use this diagram for visual of where to plug things in:
