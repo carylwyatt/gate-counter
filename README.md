@@ -170,11 +170,15 @@ Open `gate-counter.js` and replace all the variables with the appropriate values
 > My plan is to eventually create an npm package that will do all of this, but I haven't gotten that far. Until then, this should work as long as you replace the google form URL and entry IDs with your form info.
 
 ### install packages
+In your project's working directory, run:
+
 `npm install --save request moment node-schedule raspi-io johnny-five`
 
 This could take a few minutes.
 
 ### run program
+Then:
+
 `sudo node gate-counter.js`
 
 If your PIR sensor is hooked up correctly and you have no syntax errors in your `gate-counter.js` file, you should get something looking like this in your console:
@@ -198,6 +202,3 @@ My first google after thinking *"I bet I could do this with a raspi..."* turned 
 - [Building a People Counter with Raspberry Pi and Ubidots](https://ubidots.com/blog/building-a-people-counter-with-raspberry-pi-and-ubidots/)
 - [Building a People Counter with a PIR sensor](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=91902&sid=319eac22b1fb3235cd73de4a0944fd7b)
 - [Footfall](https://github.com/WatershedArts/Footfall)
-
-### technical 
-
