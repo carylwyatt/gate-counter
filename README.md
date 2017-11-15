@@ -11,7 +11,8 @@ Ivy Tech Community College | Lawrence Library's raspberry pi gate counter projec
  3. [raspberry pi](#raspi)
  4. [google form](#google)
  5. [node.js](#node)
- 6. [further reading](#reading)
+ 6. [run it!](#run)
+ 7. [further reading](#reading)
 
 <a name="why"></a>
 ## why?
@@ -59,8 +60,8 @@ network={
         ssid="network name" //mine is IVYStaff
         key_mgmt=WPA-EAP
         eap=PEAP
-        identity="user@ivytech.edu"
-        password="password"
+        identity="user@ivytech.edu" //school username
+        password="password" //school password
         phase2="auth=MSCHAPv2"
 }
 ```
@@ -73,7 +74,21 @@ Raspberry Pi [wifi configuration docs](https://www.raspberrypi.org/documentation
 ### PIR sensor
 Now for the fun stuff!
 
+The sensor has three pins on the back and you will use all three. Plug three jumper wires to those pins. The first time I tried this, I thought I needed to be super gentle, but these things are all that fragile, so make sure you get a snug connection! 
 
+Hook up the other end of the wires to the following GPIO pins on the raspi motherboard (you can find the labels of PIR pins on the back next to where to pins connect to the sensor):
+
+Ground (**GND**) 	--> 	Ground (pin 06)
+V+ (**VCC**)			-->	 3.3v (pin 01)
+Signal 	(**OUT**)	--> GPIO 07 (pin 26)
+
+Use this diagram for visual of where to plug things in:
+
+![raspi 3 model b pin diagram](https://www.element14.com/community/servlet/JiveServlet/previewBody/73950-102-11-339300/pi3_gpio.png)
+
+You can always choose a different pin for the output, but you'll need to update the code on line 41 where it says `GPIO7`.
+
+The first time I set this up, I used the 5v power instead of 3.3v and it was giving me a false reading every minute at the same second. After reading in some forum that it might be the voltage, I set it to 3.3v. *I still sometimes get false positives, but a reboot of the pi usually fixes that.*
 
 <a name="google"></a>
 ## google form
@@ -91,12 +106,14 @@ I'm sure all of this can be done using only the timestamp, but this was easier f
 
 During a previous project, I realized you can send data to google form without ever needing to see or use the ugly form page. Each form input has a unique entry ID, and when those IDs and corresponding responses are appended to the form's URL string, google posts that information to the form responses. These can then go straight into a spreadsheet.
 
-Use your browser's handy-dandy inspector tools on each input of your form to find the unique ID number (it will look like `entry.039480298`). Swap out the URL of the form (everything except the `viewform` bit at the end-- don't forget the last slash!) and entry variables in `gate-counter.js` and you should be good to go!
+Use your browser's handy-dandy inspector tools on each input of your form to find the unique ID number (it will look like `entry.039480298`). Swap out the URL of the form (everything except the `/viewform` bit at the end) and entry variables in `gate-counter.js` and you should be good to go!
 
 What the form URL should look like:
+
 ![form url](https://libapps.s3.amazonaws.com/accounts/41961/images/form-url.jpg)
 
 Where to find entry ID number in inspector:
+
 ![inspect entry id #](https://libapps.s3.amazonaws.com/accounts/41961/images/entry-id.jpg)
 
 You can test your URL by taking the URL from the cron job section of the code and sub in all the variables (both IDs and their respective values) and popping it into your address bar. If you get the google form submission page saying you submitted a form, you win!
@@ -107,6 +124,7 @@ You can test your URL by taking the URL from the cron job section of the code an
 
 [My spreadsheet](https://docs.google.com/spreadsheets/d/1X7p5venJ61yVd6fyzJkJJAzVwMIyXJD4Db2249MfIVw/edit#gid=587752914) has some logic and math built in to separate the data from the form by month and count it up in different ways. This is by no means an elegant solution, but it is free and it works. Feel free to make a copy! **File > Make a copy**
 
+<a name="node"></a>
 ## node.js
 Most of the examples of IR sensor people counters I found via google were built with python. I'm a javascript girl. For the sake of the raspi, I attempted to learn python, but I struggled to debug in a new language, so I switched to javascript. See the [further reading](#reading) section below to see what other raspi-ers accomplished using python.
 
@@ -130,7 +148,7 @@ Johnny Five is written to be used with an arduino. Since we're using a raspi, we
 [Request](https://www.npmjs.com/package/request) makes http calls. In other words, it's what sends our form URL to google. It doesn't get any easier than those six lines of code.
 
 #### moment.js
-[Moment.js](https://momentjs.com/) is the easy way to deal with time in javascript. Fun fact: javascript counts time as how many milliseconds have passed since midnight of January 1, 1970! How fun is it to calculate `1510774793166 ms` into an actual date? Not a whole lot, actually. Moment.js takes care of all of that for us! 
+[Moment.js](https://momentjs.com/) is the easy way to deal with time in javascript. Fun fact: javascript counts time as how many milliseconds have passed since midnight of January 1, 1970! How fun is it to calculate `1510774793166 ms` into a recognizable date format? Not a whole lot, actually. Moment.js takes care of all of that for us! 
 
 If you've decided to remove the month, date, and time variables from your form/code, you don't need moment.js. There is no need to install the module and delete it from the required modules at the top of the file. 
 
@@ -139,7 +157,8 @@ The easiest way to schedule our program to send our form data at a specific inte
 
 There are lots of timing options, so if you don't want your cron job to run every 10 minutes, just change the time intervals.
 
-## now, put it all together
+<a name="run"></a>
+## run it!
 Open `gate-counter.js` and replace all the variables with the appropriate values from your google form. Here's where you can tinker with what data you want to send, how often your cron job runs, etc.
 
 > My plan is to eventually create an npm package that will do all of this, but I haven't gotten that far. Until then, this should work as long as you replace the google form URL and entry IDs with your form info.
