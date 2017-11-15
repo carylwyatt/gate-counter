@@ -39,6 +39,12 @@ See [Raspberry Pi docs](https://www.raspberrypi.org/help/) for all kinds of deta
 
 At the moment, the PIR sensor portion of the raspi is taped to the inside of a kleenex box. I hope to move it to a less obvious-looking pvc pipe or something when I set it up in the library. The sensor is pretty sensitive (ha), and having it contained seems to keep the IR beam isolated enough to negate false positive reads.
 
+![gate counter in the break room](https://libapps.s3.amazonaws.com/accounts/41961/images/gate-counter.jpg)
+
+![gate counter sensor](https://libapps.s3.amazonaws.com/accounts/41961/images/gate-counter-sensor.jpg)
+
+*My very fancy, extremely sophisticated setup in our break room.*
+
 <a name="raspi"></a>
 ## raspberry pi
 ### getting started
