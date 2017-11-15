@@ -49,10 +49,12 @@ I'm currently running the raspi on the staff wifi in my building. This is not an
 Getting the wifi set up correctly was challenging because of the network security or something. It took some googling, but I eventually found some raspi forum where a student had figured out what to include in the wpa config file to get on the university wifi, and this bit of network code ended up working for me at my institution (ymmv):
 
 1. Open the wpa-supplicant file using nano:
+
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
 
 2. Paste this in:
-`network={
+```
+network={
         ssid="network name" //mine is IVYStaff
         key_mgmt=WPA-EAP
         eap=PEAP
@@ -60,7 +62,7 @@ Getting the wifi set up correctly was challenging because of the network securit
         password="password"
         phase2="auth=MSCHAPv2"
 }
-`
+```
 3. `sudo reboot`
 
 I'm not familiar with networking, so I don't actually understand what most of this means. You're on your own to figure your system out!
