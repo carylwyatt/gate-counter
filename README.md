@@ -1,5 +1,5 @@
-# gate-counter
-Lawrence Library's Raspberry Pi gate counter project
+# raspberry pi gate counter
+Ivy Tech Community College | Lawrence Library's raspberry pi gate counter project
 > Disclaimer: I am not a programmer by trade; I am a librarian with some web dev skills.  There are probably better ways to accomplish this task, but this is how I did it with the tools and skills available to me. The following code/instructions are an amalgamation of google/stack overflow copy pasta and some basic javascript.
 
 **table of contents**
