@@ -102,6 +102,8 @@ The first time I set this up, I used the 5v power instead of 3.3v and it was giv
 ## google form
 > You can collect the data however you want, but I'd rather all those numbers go to a spreadsheet in the cloud. Google Sheets to the rescue!
 
+Create a new [Google Form](https://gsuite.google.com/learning-center/products/forms/get-started/).
+
 My form collects six pieces of input data as well as the timestamp. Because my team plans on using this program/device in multiple libraries, `LOCATION` and `DOOR` are important pieces of data for us. You might only have one location and one door. Feel free to remove those and any associated code. 
 
 The most important data is `COUNT`. The code runs a cron job that submits the count every 10 minutes. Again, feel free to change this in the code if that is too frequent.
@@ -109,6 +111,8 @@ The most important data is `COUNT`. The code runs a cron job that submits the co
 The last three inputs are all time-related. If the timestamp is sufficient for your needs, feel free to remove these from the code. `MONTH` is helpful to divide the form data into different spreadsheets by month without too much trouble in the spreadsheet logic department. `DATE` is similarly helpful and is useful when summing the daily count. `TIME` is useful for counting which hours have the most traffic. 
 
 I'm sure all of this can be done using only the timestamp, but this was easier for me.
+
+Once you've added your fields in the **Questions** pane, switch to the **Reponses** pane and click the green spreadsheet icon to create a new Google Sheet for the form responses.
 
 ### form URL
 
