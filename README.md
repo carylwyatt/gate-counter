@@ -26,7 +26,7 @@ Ivy Tech has lots of libraries and no money. We want to be able to compare data 
  - [case ($7)](https://www.amazon.com/Raspberry-Model-Protective-Heatsinks-Clear/dp/B01D8368QA/ref=pd_sim_147_4?_encoding=UTF8&pd_rd_i=B01CDVSBPO&pd_rd_r=5H1KW6WZRX7Y41ZRN5P7&pd_rd_w=DYn2v&pd_rd_wg=U4ny1&refRID=5H1KW6WZRX7Y41ZRN5P7&th=1)
  -  [power supply ($10)](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Charger/dp/B00MARDJZ4/ref=sr_1_1?ie=UTF8&qid=1510761661&sr=8-1&keywords=CanaKit-Raspberry-Supply-Adapter-Charger)
  - [samsung 32gb evo plus microSD card with adapter ($13)](https://www.amazon.com/Samsung-Class-Micro-Adapter-MB-MC32DA/dp/B00WR4IJBE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1510761711&sr=1-1&keywords=samsung-EVO-Plus-Adapter-MB-MC32DA)
- - [PIR sensor ($14)](https://www.amazon.com/dp/B00B8867V4/ref=psdc_7459508011_t3_B00FDPO9B8)
+ - [PIR sensor ($14)](https://www.parallax.com/product/555-28027)
  - [jumper wires, female-female ($6)](https://www.amazon.com/GenBasic-Female-Solderless-Breadboard-Prototyping/dp/B01L5ULRUA/ref=sr_1_4?s=electronics&ie=UTF8&qid=1502224568&sr=1-4&keywords=female+female+jumper+wires)
 
 **total: $85**
