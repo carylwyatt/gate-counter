@@ -2,6 +2,7 @@
 *~
 *.swp
 *.swo
+*.swn
 
 #node modules/packages#
 node_modules
