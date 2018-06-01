@@ -33,6 +33,8 @@ Ivy Tech has lots of libraries and no money. We want to be able to compare data 
 
 > Alternatively, it might be easier to skip the first three and get the [CanaKit](https://www.amazon.com/CanaKit-Raspberry-Clear-Power-Supply/dp/B01C6EQNNK/ref=pd_sbs_147_3?_encoding=UTF8&pd_rd_i=B01C6EQNNK&pd_rd_r=5H1KW6WZRX7Y41ZRN5P7&pd_rd_w=INDdA&pd_rd_wg=U4ny1&psc=1&refRID=5H1KW6WZRX7Y41ZRN5P7) (which includes raspi, case, and power supply) for ~$50
 
+> If, like me, you experience false triggers, you might also want to get some [3mm ferrite beads ($7 for 10 on amazon)](https://www.amazon.com/Topnisus-Anti-interference-High-frequency-Suppressor-diameter/dp/B01E6PLXZ0/ref=sr_1_2?ie=UTF8&qid=1527882652&sr=8-2&keywords=3mm+ferrite+beads). I placed one on each end of the jumper wires to block the wifi signal that was causing interference.
+
 You'll also need some way to connect to the pi. I used an [HDMI-connected TV, extra mouse/keyboard, and ethernet cable](https://www.raspberrypi.org/learning/hardware-guide/) for initial setup, then used [VNC viewer](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en) from my work computer to connect [headlessly](https://www.raspberrypi.org/documentation/remote-access/ip-address.md) via [SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md). 
 
 See [Raspberry Pi docs](https://www.raspberrypi.org/help/) for all kinds of detail on how to get started.
