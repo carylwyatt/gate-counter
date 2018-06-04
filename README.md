@@ -210,3 +210,8 @@ My first google after thinking *"I bet I could do this with a raspi..."* turned 
 - [Building a People Counter with Raspberry Pi and Ubidots](https://ubidots.com/blog/building-a-people-counter-with-raspberry-pi-and-ubidots/)
 - [Building a People Counter with a PIR sensor](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=91902&sid=319eac22b1fb3235cd73de4a0944fd7b)
 - [Footfall](https://github.com/WatershedArts/Footfall)
+
+### great help
+When I encountered a problem, these articles helped me over a hurdle.
+
+- When I struggled for ***months*** with false positives from the PIR sensor, I finally came across [Magic Mirror with a Motion Detector](https://helentronica.com/2016/01/11/magic-mirror-with-motion-detector/), which gave me the idea to use ferrite beads on the jumper wires to negate wifi interference. It worked!
