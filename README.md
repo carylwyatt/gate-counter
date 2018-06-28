@@ -98,7 +98,7 @@ Use this diagram for visual of where to plug things in:
 
 You can always choose a different pin for the output, but you'll need to update the code on line 41 where it says `GPIO7`.
 
-The first time I set this up, I used the 5v power instead of 3.3v and it was giving me a false reading every minute at the same second. After reading in some forum that it might be the voltage, I set it to 3.3v. *I still sometimes get false positives, but a reboot of the pi usually fixes that.*
+The first time I set this up, I used the 5v power instead of 3.3v and it was giving me a false reading every minute at the same second. After reading in some forum that it might be the voltage, I set it to 3.3v. *I still sometimes get false positives, but a reboot of the pi usually fixes that. **Update: If you're getting false triggers every minute on the same second, you are probably experiencing wifi interference from the Pi 3's built-in wifi. You might benefit from adding ferrite beads to the jumper wires (see [equipment list](#equipment) above).***
 
 <a name="google"></a>
 ## google form
