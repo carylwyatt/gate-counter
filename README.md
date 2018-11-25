@@ -4,6 +4,8 @@ Ivy Tech Community College | Lawrence Library's raspberry pi gate counter projec
 
 > Disclaimer: I am not a programmer by trade; I am a librarian with some web dev skills.  There are probably better ways to accomplish this task, but this is how I did it with the tools and skills available to me. The following code/instructions are an amalgamation of google/stack overflow copy pasta and some basic javascript.
 
+*Would you rather run this in docker? Check out my other repo: Gate counter, now with more containerization [docker-people-counter](https://github.com/carylwyatt/docker-people-counter)*
+
 **table of contents**
 
  1. [why?](#why)
