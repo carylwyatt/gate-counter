@@ -64,7 +64,7 @@ Getting the wifi set up correctly was challenging because of the network securit
 1. Open the wpa-supplicant file using nano:
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
 
-2. Paste this in:
+2. Paste this in (REMOVE COMMENTS):
 ```
 network={
         ssid="network name" //mine is IVYStaff
